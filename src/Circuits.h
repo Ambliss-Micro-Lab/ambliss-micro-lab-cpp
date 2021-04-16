@@ -1,10 +1,12 @@
-class Circuits{
+#include "../include/digital/Gates.h"
+
+class Circuits: public Gates{
     private:
         // Inputs, Output variables gets stored here. 
         int num_inp;
         int num_ops;
-        int inputs[];
-        int outputs[];
+        // int inputs[];
+        // int outputs[];
         
     public:
         // public methods
