@@ -1,34 +1,14 @@
-class Circuit{
+class Circuits{
     private:
-    // Circuit variables ( If any )
+        // Inputs, Output variables gets stored here. 
+        int num_inp;
+        int num_ops;
+        int inputs[];
+        int outputs[];
+        
     public:
+        // public methods
 
-    class Digital{
-       private:
-        // Circuit variables ( If any )
-        public:
+        // create set_inputs, set_outputs method
 
-        class Gates{
-            private:
-            // Circuit variables ( If any )
-            public:
-
-            class And{
-                private:
-                    int inp1;
-                    int inp2;
-                public:
-                void getInputs(){
-                    // Need to return both inputs
-                }
-                void input(int val1, int val2){
-                    inp1 = val1;
-                    inp2 = val2;
-                }
-                int output(){
-                    return inp1 & inp2;
-                }
-            };
-        }; 
-    };
 };
