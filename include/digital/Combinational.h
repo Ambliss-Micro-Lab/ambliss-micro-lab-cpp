@@ -1,4 +1,6 @@
 #include "./Gates.h"
+#include<bits/stdc++.h>
+using namespace std;
 
 class Combinational: public Gates{
     private:
@@ -9,6 +11,9 @@ class Combinational: public Gates{
 
         void half_adder(int x, int y, int* sum, int* carry);
         void full_adder(int x, int y, int cin, int* sum, int* carry);
+        
+        //implement mux
+        bool mux(vector<int> data,vector<int> sel); 
 };
 
 inline void Combinational::half_adder(int x, int y, int* sum, int* carry){
@@ -24,4 +29,11 @@ inline void Combinational::full_adder(int x, int y, int cin, int* sum, int* carr
     int wire3 = and_gate(2,cin,y);
     
     *carry = or_gate(3,wire1,wire2,wire3);
+}
+inline bool Combinational::mux(vector<int> data,vector<int> sel){
+    int ind=0;
+    for(int i=0;i<sel.size();i++){
+        ind=ind*2+sel[i];
+    }
+    return data[ind];
 }
