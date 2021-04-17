@@ -41,7 +41,7 @@ inline bool Combinational::mux(vector<int> data,vector<int> sel){
 }
 inline vector<bool> Combinational::demux(int data, int sel)
 {
-    vector<bool> output;
+    vector<bool> output(sel);
     output[sel] = data;
     return output;
 }
