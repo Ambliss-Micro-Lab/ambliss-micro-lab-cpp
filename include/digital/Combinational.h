@@ -9,6 +9,9 @@ class Combinational: public Gates{
 
         void half_adder(int x, int y, int* sum, int* carry);
         void full_adder(int x, int y, int cin, int* sum, int* carry);
+        // implement half, full subtractor.
+
+        // implement mux, demux, encoder, decoder.
 };
 
 inline void Combinational::half_adder(int x, int y, int* sum, int* carry){
