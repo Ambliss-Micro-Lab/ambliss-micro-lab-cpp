@@ -14,6 +14,8 @@ class Combinational: public Gates{
         // implement half, full subtractor.
 
         // implement mux, demux, encoder, decoder.
+        bool mux(vector<int> data,vector<int> sel); 
+        vector<bool> demux(int data, int sel);
 };
 
 inline void Combinational::half_adder(int x, int y, int* sum, int* carry){
@@ -36,4 +38,10 @@ inline bool Combinational::mux(vector<int> data,vector<int> sel){
         ind=ind*2+sel[i];
     }
     return data[ind];
+}
+inline vector<bool> Combinational::demux(int data, int sel)
+{
+    vector<bool> output;
+    output[sel] = data;
+    return output;
 }
