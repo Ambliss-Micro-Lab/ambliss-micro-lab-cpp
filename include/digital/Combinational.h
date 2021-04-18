@@ -68,7 +68,7 @@ inline pair<bool, bool> Combinational::full_subtractor(bool x, bool y, bool bin)
     return res;
 }
 
-inline bool Combinational::mux(vector<int> data,vector<int> sel){
+inline bool Combinational::mux(vector<bool> data,vector<bool> sel){
     int ind=0;
     for(int i=0;i<sel.size();i++){
         ind=ind*2+sel[i];
@@ -102,7 +102,7 @@ inline vector<bool> Combinational::encoder(vector<bool> data){
     int n = log2(data.size());
     vector<bool> sel(n,0);
     int i = n - 1;
-     while(num!=0){
+    while(num!=0){
         sel[i] = num%2;
         num = num/2;
         i--;
