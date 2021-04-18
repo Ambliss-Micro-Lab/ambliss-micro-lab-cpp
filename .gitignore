@@ -1,2 +1,4 @@
 /build/*.o
 /bin/*.a
+
+/examples/digital/*.exe

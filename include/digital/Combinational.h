@@ -102,7 +102,7 @@ inline vector<bool> Combinational::encoder(vector<bool> data){
     int n = log2(data.size());
     vector<bool> sel(n,0);
     int i = n - 1;
-     while(num!=0){
+    while(num!=0){
         sel[i] = num%2;
         num = num/2;
         i--;
