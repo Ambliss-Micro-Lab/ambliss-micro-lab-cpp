@@ -1,8 +1,7 @@
-#include "../include/digital/Gates.h"
-#include<bits/stdc++.h>
-using namespace std;
+#include "../include/digital/Combinational.h"
+#include "../include/include.h"
 
-class Circuits: public Gates{
+class Circuits: public Combinational{
     private:
         // Inputs, Output variables gets stored here. 
         int num_inp;
@@ -27,7 +26,8 @@ inline void Circuits::setInputs(int n_args, ...){
 
     va_list ap;
     va_start(ap, n_args);
-    for(int i = 0; i < n_args; i++) {
+    num_inp = n_args;
+    for(int i = 0; i < num_inp; i++) {
         int* a = va_arg(ap, int*);
         inputs.push_back(a);
     }
@@ -38,7 +38,8 @@ inline void Circuits::setOutputs(int n_args, ...){
 
     va_list ap;
     va_start(ap, n_args);
-    for(int i = 0; i < n_args; i++) {
+    num_ops = n_args;
+    for(int i = 0; i < num_ops; i++) {
         int* a = va_arg(ap, int*);
         outputs.push_back(a);
     }

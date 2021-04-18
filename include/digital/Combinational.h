@@ -1,54 +1,77 @@
 #include "./Gates.h"
-#include<bits/stdc++.h>
-using namespace std;
+#include "../include.h"
 
 class Combinational: public Gates{
     private:
         // Inputs, Output variables gets stored here.
         
     public:
-        // public methods
-
-        void half_adder(int x, int y, int* sum, int* carry);
-        void full_adder(int x, int y, int cin, int* sum, int* carry);
-        
+        // public method
+        pair<bool, bool> half_adder(bool x, bool y);
+        pair<bool, bool> full_adder(bool x, bool y, bool cin);
+        pair<bool, bool> half_subtractor(bool x, bool y);
+        pair<bool, bool> full_subtractor(bool x, bool y, bool bin);
+  
         //implement mux
-
         bool mux(vector<bool> data , vector<bool> sel); 
         
         //implement demux
-
         vector<bool> demux(bool data , vector<bool> sel); 
 
         //implement encoder
- 
         vector<bool> encoder(vector<bool> data);
 
         //implement decoder
-
         vector<bool> decoder(vector<bool> sel);
 };
 
-
-inline void Combinational::half_adder(int x, int y, int* sum, int* carry){
-    *sum = xor_gate(2,x,y);
-    *carry = and_gate(2,x,y);
+inline pair<bool, bool> Combinational::half_adder(bool x, bool y){
+    bool sum = xor_gate(2,x,y);
+    bool carry = and_gate(2,x,y);
+    pair<bool, bool> res(sum,carry);
+    return res;
 }
 
-inline void Combinational::full_adder(int x, int y, int cin, int* sum, int* carry){
-    *sum = xor_gate(3,x,y,cin);
+inline pair<bool, bool> Combinational::full_adder(bool x, bool y, bool cin){
+    bool sum = xor_gate(3,x,y,cin);
 
-    int wire1 = and_gate(2,x,y);
-    int wire2 = and_gate(2,cin,x);
-    int wire3 = and_gate(2,cin,y);
+    bool wire1 = and_gate(2,x,y);
+    bool wire2 = and_gate(2,cin,x);
+    bool wire3 = and_gate(2,cin,y);
     
-    *carry = or_gate(3,wire1,wire2,wire3);
+    bool carry = or_gate(3,wire1,wire2,wire3);
+
+    pair<bool, bool> res(sum,carry);
+    return res;
 }
 
-inline bool Combinational::mux(vector<bool> data,vector<bool> sel){
-    int ind = 0;
-    for(int i = 0 ; i < sel.size() ; i++){
-        ind = ind * 2 + sel[i];
+inline pair<bool, bool> Combinational::half_subtractor(bool x, bool y){
+    bool difference = xor_gate(2,x,y);
+    bool x_bar = not_gate(x);
+    bool borrow = and_gate(2,x_bar,y);
+    pair<bool, bool> res(difference,borrow);
+    return res;
+}
+
+inline pair<bool, bool> Combinational::full_subtractor(bool x, bool y, bool bin){
+    bool difference = xor_gate(3,x,y,bin);
+
+    bool x_bar = not_gate(x);
+
+    bool wire1 = and_gate(2,x_bar,bin);
+    bool wire2 = and_gate(2,x_bar,y);
+    bool wire3 = and_gate(2,y,bin);
+    
+    bool borrow = or_gate(3,wire1,wire2,wire3);
+
+    pair<bool, bool> res(difference,borrow);
+    return res;
+}
+
+inline bool Combinational::mux(vector<int> data,vector<int> sel){
+    int ind=0;
+    for(int i=0;i<sel.size();i++){
+        ind=ind*2+sel[i];
     }
     return data[ind];
 }
@@ -63,6 +86,7 @@ inline vector<bool> Combinational::demux(bool data , vector<bool> sel){
     out[ind] = data;
     return out;
 }
+
 inline vector<bool> Combinational::encoder(vector<bool> data){
     int ind;
     for(int i = 0 ; i < data.size() ; i++){
