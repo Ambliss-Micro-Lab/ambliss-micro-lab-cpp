@@ -1,4 +1,4 @@
-#include "ambliss_micro_lab.h"
+#include "test.h"
 
 int main(){
    
@@ -8,8 +8,8 @@ int main(){
     bool A = true, B = true, C = false; // inputs
     bool F1; // outputs
 
-    c1.setInputs(3, &A, &B, &C);
-    c1.setOutputs(1, &F1);
+    // c1.setInputs(3, &A, &B, &C);
+    // c1.setOutputs(1, &F1);
 
     bool wire1 = c1.and_gate(2,A,B);
     bool wire2 = c1.and_gate(2,B,C);
@@ -25,8 +25,8 @@ int main(){
     bool X = true, Y = true, Z = false; // inputs
     bool F2; // outputs
 
-    c2.setInputs(3, &X, &Y, &Z);
-    c2.setOutputs(1, &F2);
+    // c2.setInputs(3, &X, &Y, &Z);
+    // c2.setOutputs(1, &F2);
 
     wire1 = c2.and_gate(2,X,Y);
     wire2 = c2.not_gate(Z);
@@ -47,8 +47,8 @@ int main(){
     bool P = true, Q = true, R = false , S = false; // inputs
     bool F3; // outputs
 
-    c3.setInputs(4, &P, &Q, &R ,&S);
-    c3.setOutputs(1, &F3);
+    // c3.setInputs(4, &P, &Q, &R ,&S);
+    // c3.setOutputs(1, &F3);
 
     wire1 = c3.xor_gate(2,P,Q);
     wire2 = c3.and_gate(2,wire1,R);
@@ -63,8 +63,8 @@ int main(){
     bool D = true, E = false, F = true , G = false; // inputs
     bool F4; // outputs
 
-    c4.setInputs(4, &D, &E, &F ,&G);
-    c3.setOutputs(1, &F4);
+    // c4.setInputs(4, &D, &E, &F ,&G);
+    // c3.setOutputs(1, &F4);
 
     wire1 = c4.xnor_gate( 2, D, E);
     wire2 = c4.nand_gate( 2, wire1, F);
