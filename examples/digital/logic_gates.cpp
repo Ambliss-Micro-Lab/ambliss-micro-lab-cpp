@@ -2,6 +2,7 @@
 #include "../../include/include.h"
 
 int main(){
+   
     // Example 1 : F1 = AB + BC
     Circuits c1;
 
