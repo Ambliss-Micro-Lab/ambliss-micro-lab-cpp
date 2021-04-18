@@ -1,8 +1,7 @@
-#include "../include/digital/Gates.h"
-#include<bits/stdc++.h>
-using namespace std;
+#include "../include/digital/Combinational.h"
+#include "../include/include.h"
 
-class Circuits: public Gates{
+class Circuits: public Combinational{
     private:
         // Inputs, Output variables gets stored here. 
         int num_inp;
